@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 HiveWyre.com
+ * Block configuration for conversion snippet code
+ * @autor eduedeleon
+ * */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content"> <!-- Define where to put the conversion code block -->
+            <block class="Hivewyre\Magentoconnector\Block\Conversion" name="hivewyre_magentoconnector_conversion" template="conversion.phtml"/>
+        </referenceContainer>
+	 </body>
+
+    <referenceBlock name="hivewyre_magentoconnector_tracking" remove="true"/>
+</page>

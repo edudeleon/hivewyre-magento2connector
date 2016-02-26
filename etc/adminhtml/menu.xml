@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 hivewyre.com
+ * FileDescription: File used to configure the admin panel section
+ * @autor eduedeleon
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="hivewyre_magentoconnector::hivewyre_magentoconnector_marketing_link" title="Hivewyre" module="Magento_Config" sortOrder="12" parent="Magento_Backend::marketing_user_content" action="adminhtml/system_config/edit/section/hivewyre_magentoconnector" resource="Magento_Config::config"/>
+    </menu>
+</config>

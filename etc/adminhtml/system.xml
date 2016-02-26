@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 hivewyre.com
+ * FileDescription: File used to configure the admin panel section
+ * @autor eduedeleon
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <!-- hivewyre Tab -->
+        <tab id="hivewyre" translate="label" sortOrder="350">
+            <label>Hivewyre</label>
+        </tab>
+
+            <!-- Connector section -->
+            <section id="hivewyre_magentoconnector" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Extension Settings</label>
+                <tab>hivewyre</tab> <!-- Tab where section is linked -->
+                <resource>Magento_Config::config</resource>
+                
+                <!-- Account Section -->
+                <group id="account_settings" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account Settings</label>
+                    <attribute type="expanded">1</attribute>
+
+                    <!-- Module enable -->
+                    <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment><![CDATA[HiveWyre Module Enabled?]]></comment>
+                    </field>
+
+                    <!-- Site Id -->
+                    <field id="site_id" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Site Id</label>
+                        <comment><![CDATA[Site ID assigned to your domain. If you still don't have an account, click the Registeration tab below and fill the required information. If you already have an account, please click the Login tab and enter your login information to connect your site with Magento.]]></comment>
+                    </field>
+                </group>
+
+                <!-- Registration Section -->
+                <group id="account_registration" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <!-- Group configs -->
+                    <label>Registration</label>
+                    <attribute type="expanded">0</attribute>
+                    <comment><![CDATA[If you still don't have a Hivewyre account, you can create one here.]]></comment>
+
+                    <!-- Email -->
+                    <field id="email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Email</label>
+                    </field>
+
+                    <!-- Website Name -->
+                    <field id="website" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Website Name</label>
+                        <comment><![CDATA[Please enter your website URL without the www preface (ex. Hivewyre.com).]]></comment>
+                    </field>
+
+                    <!-- Segments  -->
+                    <field id="segments" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Segments</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment><![CDATA[Please select the category that best describes your site.]]></comment>
+                    </field>
+
+                     <!-- Password  -->
+                    <field id="password" translate="label" type="password" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">"1">
+                        <label>Password</label>
+                        <comment><![CDATA[ The password must be at least 6 characters long. <button class="register" onclick="registerMerchant(); return false;" style="width: 89%; height: 30px;font-size: 16px;"> Register </button><div id="hivewyre-api-register-results"></div>]]></comment>
+                    </field>
+                </group>
+
+                <!-- Login Section -->
+                <group id="account_login" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <!-- Group configs -->
+                    <label>Login</label>
+                    <attribute type="expanded">0</attribute>
+                    <comment><![CDATA[If you have a Hivewyre account, please enter your Email and password and click "Get Websites" to list your registered domains. Second, select the Webiste you wish to connect with Magento and click "Connect Website".]]></comment>
+
+                    <!-- Email -->
+                    <field id="email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Email</label>
+                    </field>
+
+                     <!-- Password  -->
+                    <field id="password" translate="label" type="password" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Password</label>
+                        <comment><![CDATA[<button class="login" onclick="loginMerchant(); return false;" style="margin-left: 70px; height: 25px;"> Get Websites </button><div id="hivewyre-api-login-results"></div>]]></comment>
+                    </field>
+
+                     <!-- List of Websites   -->
+                    <field id="website" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Websites</label>
+                        <source_model>Hivewyre\Magentoconnector\Model\Config\Source\Websites</source_model>
+                        <comment><![CDATA[Please select a website to connect.  <input type="hidden" id="token"/><button class="connect" onclick="connectMerchant(); return false;" style="width: 89%; height: 30px;font-size: 16px;"> Connect Website </button><div id="hivewyre-api-connect-results"></div>]]></comment>
+                    </field>
+                </group>
+
+                <!-- Jquerycalls -->
+                <group id="account_jquerycalls" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> </label>
+                    <attribute type="expanded">0</attribute>
+                    <field id="jquerycalls" translate="label" type="link" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label></label>
+                        <frontend_model>Hivewyre\Magentoconnector\Block\Adminhtml\System\Config\Jquerycalls</frontend_model>
+                    </field>
+                </group>
+            </section>
+
+             <!-- Dashboard -->
+            <section id="hivewyre_dashboard" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Dashboard</label>
+                <tab>hivewyre</tab> <!-- Tab where section is linked -->
+                <resource>Magento_Config::config</resource>
+
+                 <!-- Iframe -->
+                <group id="dashboard_iframe" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> </label>
+                    <attribute type="expanded">1</attribute>
+                    <comment><![CDATA[<a href="https://air-staging.hivewyre.com/#/" target="_blank" style="float:left;">Open in new tab</a>]]></comment>
+                    <field id="iframe" translate="label" type="link" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Dashboard</label>
+                        <frontend_model>Hivewyre\Magentoconnector\Block\Adminhtml\System\Config\Iframe</frontend_model>
+                    </field>
+                </group>
+            </section>
+    </system>
+</config>
