@@ -14,7 +14,7 @@
         </tab>
 
             <!-- Connector section -->
-            <section id="hivewyre_magentoconnector" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+            <section id="hivewyre_magentoconnector" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Extension Settings</label>
                 <tab>hivewyre</tab> <!-- Tab where section is linked -->
                 <resource>Magento_Config::config</resource>
