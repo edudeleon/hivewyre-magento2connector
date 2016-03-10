@@ -29,7 +29,7 @@ class Jquerycalls extends \Magento\Backend\Block\Template implements \Magento\Fr
             require(["jquery"], function($){
                 $(document).ready(function() {
                     getDropdownSegments();
-                    setWebisteName();
+                    initConfigs();
                 });
             });
         </script>';

@@ -133,7 +133,7 @@
         require(['jquery'], function($){
             //Site ID
             var site_id         = $('#hivewyre_magentoconnector_account_login_website').val();
-            var website_name    = $('#hivewyre_magentoconnector_account_login_website').text();
+            var website_name    = $('#hivewyre_magentoconnector_account_login_website option:selected').text();
 
             if(!site_id || site_id == 0){
                 alert("You need to select a website to connect.");
@@ -174,16 +174,22 @@
     }
 
     /**
-     * Set website name
+     * Init configs
      * @author edudeleon
      * @date   2016-02-25
      */
-    function setWebisteName(){
+    function initConfigs(){
         require(['jquery'], function($){
-            var website_name = $("#hivewyre_magentoconnector_account_registration_website").val();
-            
+
+            //Set website name
+            var website_name = $("#hivewyre_magentoconnector_account_registration_website").val();            
             if(!website_name){
                 $('#hivewyre_magentoconnector_account_registration_website').val(window.location.hostname);
             }
+
+            //Disable fields
+            $("#hivewyre_magentoconnector_account_settings_site_id" ).attr("disabled", "disabled");
+            $("#hivewyre_magentoconnector_account_settings_connected_website" ).attr("disabled", "disabled");
+
         });
     }
