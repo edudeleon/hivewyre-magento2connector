@@ -51,8 +51,11 @@
                         document.getElementById('hivewyre-api-register-results').innerHTML = message;
      
                     } else {
-                        //Assgin Set Site ID
+                        //Set Site ID
                         $('#hivewyre_magentoconnector_account_settings_site_id').val(result.site_id);
+
+                        //Set Website Name
+                        $('#hivewyre_magentoconnector_account_settings_connected_website').val($('#hivewyre_magentoconnector_account_registration_website').val());
                         
                         //Submit Form
                         $("#config-edit-form").submit();  
@@ -100,8 +103,14 @@
                         if(accountWebsites.length !== 0){
                             //Adding options
                             $.each(accountWebsites, function(value, key) {
-                                websitesSelect.append($("<option></option>")
-                                        .attr("value", value).text(key));
+                                
+                                var option_text = key;
+                                if(!(option_text.search("Magento.com") != -1 || option_text.search("Not Connected") != -1)){
+                                    websitesSelect.append($("<option></option>").attr({value: value, disabled:"disabled"}).text(key));
+                                } else {
+                                    websitesSelect.append($("<option></option>").attr("value", value).text(key));
+                                }
+
                             });
                         } else {
                             var message = '<ul class = "message">'+'There are no domains available for this account.'+'</ul>';
@@ -123,7 +132,13 @@
     function connectMerchant(){
         require(['jquery'], function($){
             //Site ID
-            var site_id = $('#hivewyre_magentoconnector_account_login_website').val();
+            var site_id         = $('#hivewyre_magentoconnector_account_login_website').val();
+            var website_name    = $('#hivewyre_magentoconnector_account_login_website').text();
+
+            if(!site_id || site_id == 0){
+                alert("You need to select a website to connect.");
+                return false;
+            }
 
             $.ajax({
                 url: connect_url,
@@ -131,7 +146,7 @@
                     form_key:    window.FORM_KEY,
                     domain_id:   site_id,
                     token:       $('#token').val(),
-                    rap:         '1dfc3238c2294c688073f56c64559cb4',
+                    rap:         magento_rap,
                 },
                 type: 'POST',
                 showLoader: true
@@ -142,7 +157,12 @@
      
                     } else {
                         //Set Site ID
-                        $('#hivewyre_magentoconnector_account_settings_site_id').val(site_id);
+                        $('#hivewyre_magentoconnector_account_settings_site_id').val(result.site_id);
+
+                        //Set Website Name
+                        website_name = website_name.replace("(Connected to Magento.com)", "");
+                        website_name = website_name.replace("(Not Connected)", "");
+                        $('#hivewyre_magentoconnector_account_settings_connected_website').val(website_name);
                         
                         //Submit Form
                         $("#config-edit-form").submit();

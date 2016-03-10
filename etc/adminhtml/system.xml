@@ -32,9 +32,14 @@
                     </field>
 
                     <!-- Site Id -->
-                    <field id="site_id" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <field id="site_id" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Site Id</label>
                         <comment><![CDATA[Site ID assigned to your domain. If you still don't have an account, click the Registeration tab below and fill the required information. If you already have an account, please click the Login tab and enter your login information to connect your site with Magento.]]></comment>
+                    </field>
+
+                     <!-- Connected Website -->
+                    <field id="connected_website" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Connected Website</label>
                     </field>
                 </group>
 
@@ -75,7 +80,7 @@
                     <!-- Group configs -->
                     <label>Login</label>
                     <attribute type="expanded">0</attribute>
-                    <comment><![CDATA[If you have a Hivewyre account, please enter your Email and password and click "Get Websites" to list your registered domains. Second, select the Webiste you wish to connect with Magento and click "Connect Website".]]></comment>
+                    <comment><![CDATA[If you have a Hivewyre account already, please enter your email password.  Click  “Get websites”  to get a list of your registered domains that you already added to the Hivewyre Market Insights platform. Choose ONLY websites that are Magento eCommerce sites. Once you have chosen the website to connect with the Market Insights extension, click “connect website” and your site will be connected.]]></comment>
 
                     <!-- Email -->
                     <field id="email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">

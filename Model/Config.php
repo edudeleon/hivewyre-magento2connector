@@ -11,7 +11,7 @@ class Config extends \Magento\Framework\Model\AbstractModel
    /*
     * API Endpoint
     */
-    const ENDPOINT_URL        = 'https://air-staging.hivewyre.com';
+    const ENDPOINT_URL        = 'https://clients.hivewyre.com';
     
     /*
     * Registered Account Partner
@@ -21,10 +21,15 @@ class Config extends \Magento\Framework\Model\AbstractModel
     /**
     * Hivewyre Public API Key
     */
-    const HIVEWYRE_PUBLIC_KEY = "71844299c97f4b1c8ba1250eefdc21eb";
+    const HIVEWYRE_PUBLIC_KEY = "ddb070fe0cf9401fbc4b256e1039fbc0";
     
     /**
     * Hivewyre Secret API Key
     */
-    const HIVEWYRE_SECRET_KEY = "7c7771bd58f5459aa6eaf6bfa24bdf21";
+    const HIVEWYRE_SECRET_KEY = "d8820147c6c1495081017f14f1c2104f";
+
+    /**
+     * Hivewyre tracking URL / Used in frontend header
+     */
+    const HIVEWYRE_TRACKING_URL  = "https://js.b1js.com";
 }

@@ -81,4 +81,17 @@ class Conversion extends \Magento\Framework\View\Element\Template
         $order = $this->_checkoutSession->getLastRealOrder();
         return number_format($order->getSubtotal(), 2);
     }
+
+    /**
+     * Get conversion script URL
+     * Used in the frontend
+     * @return [type]
+     * @author edudeleon
+     * @date   2016-03-09
+     */
+    public function getConversionScriptUrl(){
+        $url = \Hivewyre\Magentoconnector\Model\Config::HIVEWYRE_TRACKING_URL."/tagcontainer.js?id=".$this->_HivewyreConnectorData->getSiteId()."&type=0&order_id=".$this->getOrderId()."&value=".$this->getOrderSubtotal();
+
+        return $url;    
+    }   
 }

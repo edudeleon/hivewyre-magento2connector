@@ -147,11 +147,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                 if(empty($error_msg2)){
 
                     $websites = array();
+                    if(!empty($result2)){
+                        $websites[0] = "Select a Website";
+                    }
                     foreach ($result2 as $value) {
                         if($value["name_of_rap"] == "None" || $value["name_of_rap"] == NULL){
-                            $websites[$value['id']] = $value['domain'];
+                            $websites[$value['id']] = $value['domain']  . " (Not Connected)";
                         } else {
-                             $websites[$value['id']] = $value['domain'] . " (Connected)";
+                            $websites[$value['id']] = $value['domain'] . " (Connected to ".$value['name_of_rap'].")";
                         }
                     }
 
@@ -203,7 +206,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             if(empty($error_msg)){
                 return array(
                     'success'   => TRUE,
-                    'msg'       => __('Connection with Hivewyre was successfully completed.'),
+                    'site_id'   => $result['site_id']
                 );
             } else {
                 return array(

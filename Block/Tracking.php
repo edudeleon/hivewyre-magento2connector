@@ -49,4 +49,17 @@ class Tracking extends \Magento\Framework\View\Element\Template
     {
         return $this->_HivewyreConnectorData;
     }
+
+    /**
+     * Get tracking script URL
+     * Used in the frontend
+     * @return [type]
+     * @author edudeleon
+     * @date   2016-03-09
+     */
+    public function getTrackingScriptUrl(){
+        $url = \Hivewyre\Magentoconnector\Model\Config::HIVEWYRE_TRACKING_URL."/tagcontainer.js?id=".$this->_HivewyreConnectorData->getShopId()."&type=1";
+
+        return $url;
+    }
 }
