@@ -188,8 +188,8 @@
             }
 
             //Disable fields
-            $("#hivewyre_magentoconnector_account_settings_site_id" ).attr("disabled", "disabled");
-            $("#hivewyre_magentoconnector_account_settings_connected_website" ).attr("disabled", "disabled");
+            $("#hivewyre_magentoconnector_account_settings_site_id" ).attr("readonly", "readonly");
+            $("#hivewyre_magentoconnector_account_settings_connected_website" ).attr("readonly", "readonly");
 
         });
     }
