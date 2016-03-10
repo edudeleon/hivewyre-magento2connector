@@ -187,7 +187,7 @@
                 $('#hivewyre_magentoconnector_account_registration_website').val(window.location.hostname);
             }
 
-            //Disable fields
+            //Setting fields as readonly
             $("#hivewyre_magentoconnector_account_settings_site_id" ).attr("readonly", "readonly");
             $("#hivewyre_magentoconnector_account_settings_connected_website" ).attr("readonly", "readonly");
 
